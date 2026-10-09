@@ -1,0 +1,12 @@
+{
+    "version": "0.1.0",
+    "verifiedUpTo": "1.7.0",
+    "plugin": "bricks-migration-engine",
+    "abilities": [
+        "bricks-migration-engine/get-status",
+        "bricks-migration-engine/list-leftovers",
+        "bricks-migration-engine/get-source-context",
+        "bricks-migration-engine/get-design-handoff",
+        "bricks-migration-engine/mark-finished"
+    ]
+}
