@@ -25,8 +25,9 @@ engine's output stops: the placeholder cards and the review notes it leaves on a
   position, so the page does not reflow around it. The widget's own Elementor settings are kept untouched behind it.
   These are yours to rebuild, from the source context, with Bricks' own elements. See `bme-finishing`.
 - **Review notes.** Where the engine approximated a behaviour, changed a shape, or left a decision open, it writes a note
-  per element (a carousel edge effect Bricks lacks, a query it could not express, a form whose submit actions must be
-  set). Most need a human eye, not a rebuild. See `bme-review-notes`.
+  on the element (a carousel spacing Bricks cannot vary per breakpoint, a query it could not express, a form whose submit
+  actions must be set). Since 1.7.0 each note names its element. You fix what a Bricks setting expresses and ask the
+  owner about the rest, and record either. See `bme-review-notes`.
 - **The design system.** The Elementor global colours, fonts and spacing became Bricks global variables named `el-*`,
   shared element styling became `el2b-*` global classes (when the owner switched that on), the site styles became the
   theme style "El2B: Migrated site defaults", and the global colours also form the colour palette "Migrated from
@@ -39,8 +40,8 @@ engine's output stops: the placeholder cards and the review notes it leaves on a
   `bricks/remove-element` to take the placeholder card away once its replacement exists.
 - **The plugin's abilities** `bricks-migration-engine/*`, only while the owner has switched them on **and** the site has an
   active licence. Reading: `get-status` (call it first), `list-leftovers`, `get-source-context`, `get-design-handoff`.
-  Recording: `mark-finished`. Administrators only. There is no convert, re-convert, rollback or settings ability, by
-  design.
+  Recording: `mark-finished` (a card you rebuilt) and `record-note` (a note you fixed, or a question for the owner).
+  Administrators only. There is no convert, re-convert, rollback, mark-checked or settings ability, by design.
 - **Through WordPress's MCP Adapter**, abilities that are not listed as direct tools run through
   `mcp-adapter-execute-ability` with `ability_name` (for example `bricks-migration-engine/list-leftovers` or
   `bricks/add-element`) and `parameters`; `mcp-adapter-discover-abilities` lists what the site registers and
@@ -53,21 +54,25 @@ engine's output stops: the placeholder cards and the review notes it leaves on a
 
 1. The owner scans the site and reads the coverage report (what converts, what needs review, what has no equivalent).
 2. The owner converts pages first, then the templates they reference, on the dashboard. Each conversion is reversible.
-3. The owner reviews each converted page with the preview switcher, works through the review notes, and marks pages
-   checked. You help with the notes when asked (`bme-review-notes`).
-4. **You finish the leftovers**: rebuild each placeholder card in place and record it (`bme-finishing`, `bme-recipes`).
+3. **You finish the leftovers**: rebuild each placeholder card in place and record it (`bme-finishing`, `bme-recipes`),
+   then work through the review notes, fixing or asking, and record each (`bme-review-notes`).
+4. The owner reviews each converted page with the preview switcher, reads what you recorded under each note, and marks
+   pages checked.
 5. The owner goes live and deactivates Elementor (`bme-going-live`). Rollback is the undo at any point (`bme-rolling-back`).
 6. If the owner wants a client report, write it from the plugin's data (`bme-handoff-report`).
 
 ## Workflow in a session
 
 1. `get-status`. Say the plugin version, whether the licence is active, how many documents are converted, how many
-   leftovers are open and finished, and whether Bricks' abilities are on.
-2. `list-leftovers`. Work from that list, one card at a time, with `get-source-context` for each.
+   cards and notes are open, and whether Bricks' abilities are on.
+2. `list-leftovers`. Work from that list: the cards first (`leftovers`), then the notes (`review_notes`), one document at
+   a time, with `get-source-context` for each item.
 3. **Show the owner what you are about to build before you build it** when the intent is ambiguous (a widget with many
    settings, a dynamic source, a payment or form). Plain cases, build.
-4. After each rebuild: remove the card, `mark-finished` with a short summary and the ids you added, move on.
-5. End with a short list: what you rebuilt, where, and what the owner should look at on the front end.
+4. After each rebuild: remove the card, `mark-finished` with a short summary and the ids you added. After each note:
+   `record-note`, fixed or needs_you. Move on.
+5. End with a short list per page: what you rebuilt, what you fixed, the questions for the owner, and what to look at.
+   If you stop early, say where; the owner can run the same prompt again and the list carries on from there.
 
 ## Never
 

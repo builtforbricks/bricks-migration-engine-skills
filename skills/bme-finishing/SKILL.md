@@ -16,7 +16,8 @@ for, with Bricks' own elements, in the same place, from the widget's own setting
    Bricks id, 6 characters), `widget_type` (the Elementor widget slug), `widget` and `add_on` (the human names when the
    add-on is still installed), `note` (what the engine said). Pass `document_id` to work on one document. Finished cards
    are left out unless you pass `include_finished: true`, which also lists finished cards already removed from the page
-   (`removed: true`).
+   (`removed: true`). The same list carries the review notes (`review_notes`); `scope: "placeholders"` leaves them out.
+   They come after the cards, with `bme-review-notes`.
 3. **For each card, `bricks-migration-engine/get-source-context`** with `document_id` and `element_id`. You get:
    - `source.settings`: the widget's Elementor settings as authored, empty values removed. This is the intent.
    - `element.parent_id` and `element.index_among_siblings`, with the siblings: where the rebuild goes.

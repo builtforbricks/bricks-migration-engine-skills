@@ -7,6 +7,7 @@
         "bricks-migration-engine/list-leftovers",
         "bricks-migration-engine/get-source-context",
         "bricks-migration-engine/get-design-handoff",
-        "bricks-migration-engine/mark-finished"
+        "bricks-migration-engine/mark-finished",
+        "bricks-migration-engine/record-note"
     ]
 }

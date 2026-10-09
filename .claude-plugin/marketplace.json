@@ -5,13 +5,13 @@
         "url": "https://builtforbricks.com"
     },
     "metadata": {
-        "description": "Agent skills for Bricks Migration Engine, the Elementor-to-Bricks migration plugin for Bricks Builder: finish what the engine left behind, read the review queue, go live, roll back, write the hand-off report.",
+        "description": "Agent skills for Bricks Migration Engine, the Elementor-to-Bricks migration plugin for Bricks Builder: finish what the engine left behind, work through the review notes, go live, roll back, write the hand-off report.",
         "version": "0.1.0"
     },
     "plugins": [
         {
             "name": "bricks-migration-engine",
-            "description": "Bricks Migration Engine skills for Bricks MCP clients: start-here, finishing the leftovers, rebuild recipes, the review notes, going live, rolling back, the hand-off report and the update check.",
+            "description": "Bricks Migration Engine skills for Bricks MCP clients: start-here, finishing the leftovers, rebuild recipes, working through the review notes, going live, rolling back, the hand-off report and the update check.",
             "source": "./",
             "strict": false,
             "skills": [

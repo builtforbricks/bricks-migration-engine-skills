@@ -12,9 +12,10 @@ version it describes (`verifiedUpTo` in `skills/bme-update/references/index.json
 
 **The engine converts. Your assistant finishes.** Bricks Migration Engine converts Elementor pages, templates and site
 settings to native Bricks data, the same way every time. Where a third-party add-on widget has no Bricks equivalent, it
-leaves a labelled placeholder card in place. These skills teach an AI assistant to rebuild those cards from the widget's
-original settings, with Bricks' own elements, and to record the work, and nothing else: there is no way for an assistant
-to convert, re-convert or roll back through them, by design.
+leaves a labelled placeholder card in place, and where it approximated or left a decision, a review note on the element.
+These skills teach an AI assistant to rebuild those cards from the widget's original settings with Bricks' own elements,
+to fix the notes a Bricks setting can answer and ask the owner about the rest, and to record all of it, and nothing
+else: there is no way for an assistant to convert, re-convert, roll back or sign a page off through them, by design.
 
 ## What a skill is
 
@@ -68,10 +69,10 @@ Then start a new chat and ask: *List the loaded skills whose names start with `b
 | `bme-start-here` | Load first: what the engine does, the rule, the tools, the workflow, never do |
 | `bme-finishing` | The loop: list the leftovers, read each card's source context, rebuild in place, remove the card, record it |
 | `bme-recipes` | Which Bricks elements stand in for which add-on widgets, by what the widget did |
-| `bme-review-notes` | The engine's review note kinds, what each asks of a human, the few that are a rebuild |
+| `bme-review-notes` | The notes loop: list, read each note's source context, fix with Bricks or ask the owner, record; what each note kind means |
 | `bme-going-live` | The checks before deactivating Elementor, the order, what happens to the plugin |
 | `bme-rolling-back` | What rollback does, pages edited in Bricks, rollback all, the free trial, rollback or re-convert |
-| `bme-handoff-report` | The client report, from the plugin's data, engine conversion and assistant rebuilds kept apart |
+| `bme-handoff-report` | The client report, from the plugin's data, engine conversion and assistant work kept apart |
 | `bme-update` | Check the pack against the plugin on the site; update the pack when asked |
 
 ## The abilities the skills use
@@ -81,11 +82,12 @@ converts:
 
 | Ability | Does |
 |---|---|
-| `bricks-migration-engine/get-status` | Version, licence, documents converted, leftovers open and finished, whether Bricks' abilities are on |
-| `bricks-migration-engine/list-leftovers` | Every placeholder card per converted document, with widget, add-on and the engine's note; with `scope: "all"`, every converted document and the review notes too; with `include_finished`, the recorded cards, removed ones included |
-| `bricks-migration-engine/get-source-context` | One card's original Elementor settings, its place in the Bricks tree, its add-on, the design tokens it refers to |
+| `bricks-migration-engine/get-status` | Version, licence, documents converted, cards and notes open and done, whether Bricks' abilities are on |
+| `bricks-migration-engine/list-leftovers` | Per converted document, the placeholder cards (widget, add-on, the engine's note) and the review notes (id, kind, note, the element it names); `scope` narrows to cards or notes or widens to every document; `include_finished` adds what is recorded |
+| `bricks-migration-engine/get-source-context` | For one card or note: the original Elementor settings, the Bricks element's current settings and place in the tree, every note on it, the design tokens |
 | `bricks-migration-engine/get-design-handoff` | The variables, classes, theme style, colour palette and breakpoint the conversion created |
 | `bricks-migration-engine/mark-finished` | Records a rebuilt card for the owner, apart from the engine's own output |
+| `bricks-migration-engine/record-note` | Records a review note as fixed (what changed) or as a question for the owner; never marks a page checked |
 
 Building happens through Bricks' own abilities (`bricks/add-element`, `bricks/remove-element` and the rest).
 

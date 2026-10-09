@@ -13,7 +13,8 @@ what you rebuilt, what was decided, and what to look at. Write it from the plugi
 - `bricks-migration-engine/get-status`: plugin version, documents converted, leftovers open and finished.
 - `bricks-migration-engine/list-leftovers` with `include_finished: true` and `scope: "all"`: every converted document
   (documents with nothing to do included), its cards (open and finished; a finished card already removed from the page
-  comes with `removed: true`, its summary and the ids added), and the engine's review notes.
+  comes with `removed: true`, its summary and the ids added), and the engine's review notes, each with the record you
+  made for it (`fixed` with what changed, or `needs_you` with the question).
 - `bricks-migration-engine/get-design-handoff`: the variables, classes, theme style and breakpoint the conversion created.
 - `bricks/get-system-information`: WordPress, Bricks and plugin versions; which Elementor plugins are still active.
 - `bricks/list-templates`: the converted templates and their conditions.
@@ -25,10 +26,12 @@ what you rebuilt, what was decided, and what to look at. Write it from the plugi
 2. **Converted by the engine.** The documents, by type (pages, posts, headers, footers, templates, popups). State that the
    conversion is the plugin's deterministic output: the same source converts the same way every time.
 3. **Finished by the assistant.** One line per rebuilt card: document, what the widget was, what it is now, from its
-   `mark-finished` summary. State that these are rebuilds, made from the widget's original settings with Bricks' own
-   elements, and are not part of the engine's conversion. This section is never merged with the one above.
-4. **Open items.** Cards left as they are and why (needs its plugin, data missing, the owner's decision pending); review
-   notes that need a decision; forms whose actions still need setting.
+   `mark-finished` summary; then one line per review note fixed, from its `record-note` summary. State that these are
+   the assistant's changes, made with Bricks' own elements, and are not part of the engine's conversion. This section is
+   never merged with the one above.
+4. **Open items.** Cards left as they are and why (needs its plugin, data missing, the owner's decision pending); the
+   questions recorded as `needs_you`, quoted; notes not yet worked through; forms whose actions still need setting;
+   pages not yet marked checked.
 5. **The design system.** The `el-*` variables (by category), the `el2b-*` classes, the theme style ("El2B: Migrated site
    defaults"), the colour palette ("Migrated from Elementor") and the breakpoint, with one sentence on how to use them
    going forward.
