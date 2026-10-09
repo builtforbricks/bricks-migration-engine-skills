@@ -40,7 +40,8 @@ engine's output stops: the placeholder cards and the review notes it leaves on a
   `bricks/remove-element` to take the placeholder card away once its replacement exists.
 - **The plugin's abilities** `bricks-migration-engine/*`, only while the owner has switched them on **and** the site has an
   active licence. Reading: `get-status` (call it first), `list-leftovers`, `get-source-context`, `get-design-handoff`.
-  Recording: `mark-finished` (a card you rebuilt) and `record-note` (a note you fixed, or a question for the owner).
+  Recording: `mark-finished` (a card you rebuilt) and `record-note` (a note you fixed, a question for the owner, or the
+  owner's answer when they chose to keep something).
   Administrators only. There is no convert, re-convert, rollback, mark-checked or settings ability, by design.
 - **Through WordPress's MCP Adapter**, abilities that are not listed as direct tools run through
   `mcp-adapter-execute-ability` with `ability_name` (for example `bricks-migration-engine/list-leftovers` or

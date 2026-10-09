@@ -30,14 +30,20 @@ owner sees your work under the note. The owner then looks at the page and marks 
 4. **Decide**, by the note's family (below): fix, or ask.
 5. **Fix.** `bricks/get-element-schema` for the element first. Change only what the note describes, with
    `bricks/update-element` (or add the element or interaction it says is missing), using the `el-*` variables where a
-   value is a colour or size. Confirm with `bricks/get-page-structure`. Then `bricks-migration-engine/record-note` with
+   value is a colour or size. Prefer a native setting to the element's custom CSS: the engine's custom CSS on a converted
+   element is measured output, and the plugin keeps it as written when you save other settings, but an edit to the CSS
+   itself is saved as Bricks reformats it. Confirm with `bricks/get-page-structure`. Then `bricks-migration-engine/record-note` with
    `outcome: "fixed"`, a
    `summary` for the owner (what you changed, what to look at) and `changed` (the ids you touched).
 6. **Ask.** `record-note` with `outcome: "needs_you"` and the question as the `summary`, with the options you see
    ("keep it static, or add a Bricks interaction that…"). Change nothing.
 7. **After each document**, tell the owner what you fixed and what you asked. They look, then mark the page checked.
+8. **When the owner answers a question**, record that note again (the new record replaces the old): `fixed` with what you
+   changed if their answer needed a change, or `decided` with their answer in their words if they chose to keep it as it
+   is. Neither signs the page off.
 
 `fixed` means you changed the element. A note you only looked at is `needs_you` with what to look at, never `fixed`.
+`decided` is the owner's answer, never your own judgement: without their word, it stays `needs_you`.
 
 ## Families: what each asks, and whether you fix or ask
 

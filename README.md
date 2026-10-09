@@ -87,7 +87,7 @@ converts:
 | `bricks-migration-engine/get-source-context` | For one card or note: the original Elementor settings, the Bricks element's current settings and place in the tree, every note on it, the design tokens |
 | `bricks-migration-engine/get-design-handoff` | The variables, classes, theme style, colour palette and breakpoint the conversion created |
 | `bricks-migration-engine/mark-finished` | Records a rebuilt card for the owner, apart from the engine's own output |
-| `bricks-migration-engine/record-note` | Records a review note as fixed (what changed) or as a question for the owner; never marks a page checked |
+| `bricks-migration-engine/record-note` | Records a review note as fixed (what changed), a question for the owner, or the owner's decision to keep it; never marks a page checked |
 
 Building happens through Bricks' own abilities (`bricks/add-element`, `bricks/remove-element` and the rest).
 
