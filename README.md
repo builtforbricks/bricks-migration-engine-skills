@@ -5,8 +5,9 @@ migration plugin for Bricks Builder by Built for Bricks: how to finish what the 
 what the review notes mean, how to go live, how rollback works, and how to write the hand-off report. Checked against the
 plugin before every release.
 
-**Status: complete, awaiting its first release.** The first release goes out with Bricks Migration Engine 1.7.0, the
-version it describes (`verifiedUpTo` in `skills/bme-update/references/index.json`).
+**Status: released, 0.1.0.** It describes Bricks Migration Engine 1.7.0 (`verifiedUpTo` in
+`skills/bme-update/references/index.json`), the first version with the AI assistant. On an older version the plugin's
+abilities do not exist, and the skills say so and stop.
 
 ## The one rule
 

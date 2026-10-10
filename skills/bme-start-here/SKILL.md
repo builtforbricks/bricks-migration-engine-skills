@@ -47,9 +47,14 @@ engine's output stops: the placeholder cards and the review notes it leaves on a
   `mcp-adapter-execute-ability` with `ability_name` (for example `bricks-migration-engine/list-leftovers` or
   `bricks/add-element`) and `parameters`; `mcp-adapter-discover-abilities` lists what the site registers and
   `mcp-adapter-get-ability-info` gives an ability's input schema. Read the schema before the first call of each.
-- **When the abilities are missing**, the switch is off or the site is on the free trial. Tell the owner where the switch
-  is (**Bricks Migration > Settings > AI assistant**, with a licence active on **License & Account**) and stop. Do not work
-  around it with other tools (Bricks' PHP execution, options, the database).
+- **When the abilities are missing**, the switch is off, the site is on the free trial, or the plugin is older than 1.7.0
+  (the first version with them). Tell the owner where the switch is (**Bricks Migration > Settings > AI assistant**, with
+  a licence active on **License & Account**), or to update the plugin, and stop. Do not work around it with other tools
+  (Bricks' PHP execution, options, the database).
+- **When Bricks refuses a document** with `bricks_not_enabled_on_post_type`, its post type is not enabled for Bricks:
+  Bricks' abilities edit only the post types ticked under **Bricks > Settings > General > Post types**. Tell the owner
+  which post type and where to tick it, and carry on with the documents Bricks will edit. Do not change the setting
+  yourself.
 
 ## How a migration goes
 
